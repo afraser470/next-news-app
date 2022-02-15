@@ -6,7 +6,7 @@ import { getRandomNews } from '../lib/function';
 
 
 export async function getStaticProps() {
-  const res = await fetch("https://next-news-app-83nk8h31f-afraser470.vercel.app/api/newsApi");
+  const res = await fetch(process.env.APIpath + "/api/newsApi");
   const json = await res.json();
   
   const data = getRandomNews(json);
