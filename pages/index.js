@@ -6,7 +6,7 @@ import { getRandomNews } from '../lib/function';
 
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/newsApi");
+  const res = await fetch("/api/newsApi");
   const json = await res.json();
   
   const data = getRandomNews(json);
