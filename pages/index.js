@@ -25,6 +25,7 @@ export default function Home({articles}) {
           {siteTitle}
         </title>
       </Head>
+        <button onClick={()=>(useRouter.replace(useRouter.asPath))}>refresh</button>
         {articles.randomNews.map((article, key)=>(
             article.error == undefined?
             <div className={styles.article} key={key}>
