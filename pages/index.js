@@ -5,17 +5,10 @@ import Router from 'next/router'
 import { getRandomNews } from '../lib/function';
 
 
-export async function getStaticProps(req,res) {
-  try{
-    const data = await fetch('https://api.nytimes.com/svc/topstories/v2/world.json?api-key=tzDIKDLrSJUtyJQIXep7Y76qMee1Ucpz');
-    const json = await data.json();
-    
-
-      res.status(200).json({success:true,data:json});
-  }catch{
-      res.status(500).json({success:false,error:error.message});
-
-  }
+export async function getStaticProps() {
+  // const res = await fetch("/api/newsApi");
+  const res = await fetch('https://api.nytimes.com/svc/topstories/v2/world.json?api-key=tzDIKDLrSJUtyJQIXep7Y76qMee1Ucpz');
+  const json = await res.json();
   
   const data = getRandomNews(json);
   return{
