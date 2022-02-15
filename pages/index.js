@@ -5,7 +5,7 @@ import Router from 'next/router'
 import { getRandomNews } from '../lib/function';
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // const res = await fetch("/api/newsApi");
   const res = await fetch('https://api.nytimes.com/svc/topstories/v2/world.json?api-key=tzDIKDLrSJUtyJQIXep7Y76qMee1Ucpz');
   const json = await res.json();
