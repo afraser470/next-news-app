@@ -33,7 +33,7 @@ export default function Home({articles}) {
             <div className={styles.article} key={key}>
             <h3 className={styles.title}>{article.title}</h3>
             <p>{article.abstract}</p>
-            <a href={article.url} target="_blank" rel="noopener noreferrer">{article.url}</a>
+            <a href={article.url} target="_blank" rel="noopener noreferrer">Click to view this article!</a>
             </div>
             :
             <h3 className={styles.warning}>{article.error}</h3>
