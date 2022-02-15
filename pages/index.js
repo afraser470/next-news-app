@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.scss';
 import Layout, { siteTitle } from '../components/layout';
 import Head from 'next/head';
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 import { getRandomNews } from '../lib/function';
 
 
@@ -17,7 +17,10 @@ export async function getServerSideProps() {
 }
 
 export default function Home({articles}) {
-  
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
+  }
   return (
     <Layout>
       <Head>
@@ -25,7 +28,6 @@ export default function Home({articles}) {
           {siteTitle}
         </title>
       </Head>
-        <button onClick={()=>(useRouter.replace(useRouter.asPath))}>refresh</button>
         {articles.randomNews.map((article, key)=>(
             article.error == undefined?
             <div className={styles.article} key={key}>
@@ -36,6 +38,9 @@ export default function Home({articles}) {
             :
             <h3 className={styles.warning}>{article.error}</h3>
           ))}
+        <div className={styles.wrapper}>
+          <button className={styles.button} onClick={refreshData}>refresh</button>
+        </div>
 
     </Layout>
   )
